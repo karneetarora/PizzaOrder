@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.InputMethodEvent;
@@ -16,6 +17,12 @@ public class p4controller {
     
     @FXML
     private Label size;
+    
+    @FXML
+    private ListView<T> optionT;
+    
+    @FXML
+    private ListView<T> selectedT;
 
     @FXML
     private MenuButton build;
