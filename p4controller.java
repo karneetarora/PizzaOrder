@@ -14,6 +14,15 @@ public class p4controller {
     private MenuButton buildMenu;
 
     @FXML
+    private MenuItem pizzaDeluxe;
+
+    @FXML
+    private MenuItem pizzaHawaiian;
+
+    @FXML
+    private MenuItem pizzaBuildYourOwn;
+
+    @FXML
     private MenuButton sizeMenu;
 
     @FXML
@@ -41,10 +50,10 @@ public class p4controller {
     private Button buttonShowOrder;
 
     @FXML
-    private ListView<?> selectedToppingsList;
+    private ListView<String> selectedToppingsList;
 
     @FXML
-    private ListView<?> toppingsList;
+    private ListView<String> toppingsList;
 
     @FXML
     private ImageView imageView;
@@ -61,6 +70,7 @@ public class p4controller {
 
     @FXML
     void actionClearSelection(ActionEvent event) {
+    	selectedToppingsList.getItems().clear();
 
     }
 
@@ -74,10 +84,52 @@ public class p4controller {
 
     }
 
+
+    
+    
+    
+
+    @FXML
+    void selectedDeluxe(ActionEvent event) {
+
+    	toppingsList.getItems().clear();
+    	toppingsList.setDisable(true);
+    	buttonAddTopping.setDisable(true);
+    	buttionRemoveTopping.setDisable(true);
+    	selectedToppingsList.getItems().clear();
+    	selectedToppingsList.getItems().addAll("Sausage", "Pepperoni", "Green Pepper", 
+    			"Onion", "Mushroom");// collection?
+    	
+    }
+
+    @FXML
+    void selectedHawaiian(ActionEvent event) {
+    	toppingsList.getItems().clear();
+    	toppingsList.setDisable(true);
+    	buttonAddTopping.setDisable(true);
+    	buttionRemoveTopping.setDisable(true);
+    	selectedToppingsList.getItems().clear();
+    	selectedToppingsList.getItems().addAll("Ham", "Pineapple");
+    }
+    
     @FXML
     void selectBuildYourOwn(ActionEvent event) {
+    	// How to make this option default??
+    	toppingsList.getItems().clear();
+    	toppingsList.setDisable(false);
+    	buttonAddTopping.setDisable(false);
+    	selectedToppingsList.getItems().clear();
 
+    	toppingsList.getItems().addAll("Chicken", "Ham", "Mushroom", "Onion", "Pepperoni",
+    										"Pineapple", "Saussage","Beef", "Cheese", "Green Pepper");
+
+        
     }
+    
+    
+    
+    
+    
 
     @FXML
     void selectLarge(ActionEvent event) {
@@ -93,5 +145,6 @@ public class p4controller {
     void selectSmall(ActionEvent event) {
 
     }
+
 
 }
