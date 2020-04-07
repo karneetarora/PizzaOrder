@@ -3,63 +3,95 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
 
 public class p4controller {
-	
-    @FXML
-    private Label pizza;
-    
-    @FXML
-    private Label size;
-    
-    @FXML
-    private ListView<T> optionT;
-    
-    @FXML
-    private ListView<T> selectedT;
 
     @FXML
-    private MenuButton build;
-    
-    @FXML
-    private MenuButton selectSize;
+    private MenuButton buildMenu;
 
     @FXML
-    private Button addToOrder;
+    private MenuButton sizeMenu;
 
     @FXML
-    private Button show;
-    
-    @FXML
-    private Button addT;
-    
-    @FXML
-    private Button removeT;
-    
-    @FXML
-    private Button clearT;
+    private MenuItem sizeSmall;
 
     @FXML
-    private TextArea textArea;
-    
+    private MenuItem sizeMedium;
+
     @FXML
-    public void addT(ActionEvent event) {
-    	
+    private MenuItem sizeLarge;
+
+    @FXML
+    private Button buttonAddTopping;
+
+    @FXML
+    private Button buttionRemoveTopping;
+
+    @FXML
+    private Button buttonClearSelection;
+
+    @FXML
+    private Button buttonAddToOrder;
+
+    @FXML
+    private Button buttonShowOrder;
+
+    @FXML
+    private ListView<?> selectedToppingsList;
+
+    @FXML
+    private ListView<?> toppingsList;
+
+    @FXML
+    private ImageView imageView;
+
+    @FXML
+    void actionAddToOrder(ActionEvent event) {
+
     }
-    
+
     @FXML
-    public void removeT(ActionEvent event) {
-    	
+    void actionAddTopping(ActionEvent event) {
+
     }
-    
+
     @FXML
-    public void clearT(ActionEvent event) {
-    	
+    void actionClearSelection(ActionEvent event) {
+
     }
+
+    @FXML
+    void actionRemoveTopping(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actionShowOrder(ActionEvent event) {
+
+    }
+
+    @FXML
+    void selectBuildYourOwn(ActionEvent event) {
+
+    }
+
+    @FXML
+    void selectLarge(ActionEvent event) {
+
+    }
+
+    @FXML
+    void selectMedium(ActionEvent event) {
+
+    }
+
+    @FXML
+    void selectSmall(ActionEvent event) {
+
+    }
+
 }
