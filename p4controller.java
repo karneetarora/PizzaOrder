@@ -12,6 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class p4controller {
+	public String type; 
+	public String size; 
 
     @FXML
     private Button buttonAddTopping;
@@ -85,7 +87,9 @@ public class p4controller {
     void selectedPizza(ActionEvent event) {
     	toppingsCounter = 0;
     	if(pizzaComboBox.getValue().equals("Hawaiian")) {
-    		
+    		//type = pizzaComboBox.getValue();
+    		//size = sizeComboBox.getValue();
+
     		imageView.setImage(photoHawaiianPizza);
    		
         	toppingsList.getItems().clear();
@@ -95,6 +99,7 @@ public class p4controller {
         	selectedToppingsList.getItems().clear();
         	selectedToppingsList.getItems().addAll("Ham", "Pineapple");
         	
+    	//	Pizza H = new Hawaiian(size, selectedToppingsList);
     	}else if(pizzaComboBox.getValue().equals("Deluxe")) {
     		imageView.setImage(photoDeluxPizza);
 
@@ -118,7 +123,6 @@ public class p4controller {
         										"Pineapple", "Saussage","Beef", "Cheese", "Green Pepper");
 
     	}
-
     }
     
     @FXML
@@ -127,13 +131,11 @@ public class p4controller {
     	if (!selectedToppingsList.getItems().isEmpty()) {
     		textArea.appendText("Your pizza has been added to your order.");
     	}else {
+    		//remove system.out.print and use textArea.appendText
     		System.out.println("not good to add, curr is " );
     		textArea.appendText("Please select at least 1 topping.");
     		
     	}
-    	
-    	
-
     }
     
     
@@ -143,6 +145,4 @@ public class p4controller {
     	//implement 
     	
     }
-
-
 }
