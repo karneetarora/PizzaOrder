@@ -1,6 +1,7 @@
 package application;
 
 import java.lang.String;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -87,9 +88,6 @@ public class p4controller {
     void selectedPizza(ActionEvent event) {
     	toppingsCounter = 0;
     	if(pizzaComboBox.getValue().equals("Hawaiian")) {
-    		//type = pizzaComboBox.getValue();
-    		//size = sizeComboBox.getValue();
-
     		imageView.setImage(photoHawaiianPizza);
    		
         	toppingsList.getItems().clear();
@@ -129,6 +127,23 @@ public class p4controller {
     void actionAddToOrder(ActionEvent event) {
     	textArea.clear();
     	if (!selectedToppingsList.getItems().isEmpty()) {
+    		type = pizzaComboBox.getValue();
+    		size = sizeComboBox.getValue();
+    		ArrayList<String> toppings = new ArrayList<String>(); 
+    		switch(type) {
+    		case "Deluxe":
+    			Pizza pizza = new Deluxe(type, size, toppings);
+    			break;
+    		case "Hawaiian":
+    			pizza = new Hawaiian(type, size, toppings);
+    			break;
+    		case "Build Your Own":
+    			pizza = new BuildYourOwn(type, size, toppings);
+    			break; 
+    		default:
+    			break; 
+    		}
+    		
     		textArea.appendText("Your pizza has been added to your order.");
     	}else {
     		//remove system.out.print and use textArea.appendText
