@@ -15,7 +15,7 @@ public class Deluxe extends Pizza {
 	final static int surchargeLarge = 4; 
 	public static String style; 
 	public static String size;
-	ArrayList<String> top = new List<String>();
+	ArrayList<String> top = new ArrayList<String>();
 	
 	
 	public Deluxe(String style, String size,  ArrayList<String> top) {
