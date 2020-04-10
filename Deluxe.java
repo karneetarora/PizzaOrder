@@ -18,8 +18,8 @@ public class Deluxe extends Pizza {
 	ArrayList<String> top = new List<String>();
 	
 	
-	public Deluxe(String style, String size,  ArrayList<String> selectedToppingsList) {
-		super(style, size, selectedToppingsList);
+	public Deluxe(String style, String size,  ArrayList<String> top) {
+		super(style, size, top);
 	}
 
 	@Override
