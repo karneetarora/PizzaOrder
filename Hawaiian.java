@@ -19,8 +19,8 @@ public class Hawaiian extends Pizza{
 	public static String size;
 	ArrayList<String> top = new ArrayList<String>(); 
 	
-	public Hawaiian(String style, String size, ArrayList<String> selectedToppingsList) {
-		super(style, size, selectedToppingsList);
+	public Hawaiian(String style, String size, ArrayList<String> top) {
+		super(style, size, top);
 	}
 
 	public int pizzaPrice() {
