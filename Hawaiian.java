@@ -1,28 +1,30 @@
  /**
- * Hawaiian Class
+ * Build Your Own class
  * Methods include - pizzaPrice(), toString()
  * 
  * @author Karneet Arora, Manel Bermad
  */
 
 package application;
-import java.lang.String;
+
 import java.util.ArrayList;
 
-
-public class Hawaiian extends Pizza{
+public class BuildYourOwn extends Pizza{
 	
-	final static int small = 8;	
-	final static int surchargeMed = 2;	
-	final static int surchargeLarge = 4; 
+	final int small = 5; 
+	final int surchargeMed = 2; 
+	final int surchargeLarge = 4; 
+	final int chargePerTopping = 2; 
 	public static String style; 
 	public static String size;
-	ArrayList<String> top = new ArrayList<String>(); 
+	ArrayList<String> top= new ArrayList<String>(); 
+	int numOfToppings;
 	
-	public Hawaiian(String style, String size, ArrayList<String> top) {
+	public BuildYourOwn(String style, String size, ArrayList<String> top) {
 		super(style, size, top);
 	}
 
+	@Override
 	public int pizzaPrice() {
 		switch(size) {
 		case "Small":
