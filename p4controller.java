@@ -66,7 +66,6 @@ public class p4controller {
     
    @FXML
     void actionRemoveTopping(ActionEvent event) {
-
 	   if(!selectedToppingsList.getSelectionModel().isEmpty()) {
 		   toppingsList.getItems().add(selectedToppingsList.getSelectionModel().getSelectedItem());
 		   selectedToppingsList.getItems().remove(selectedToppingsList.getSelectionModel().getSelectedItem());
@@ -129,13 +128,18 @@ public class p4controller {
     	if (!selectedToppingsList.getItems().isEmpty()) {
     		type = pizzaComboBox.getValue();
     		size = sizeComboBox.getValue();
-    		ArrayList<String> toppings = new ArrayList<String>(); 
+    		ArrayList<String> deluxeTop = new ArrayList<String>();
+    		ArrayList<String> hawaiianTop = new ArrayList<String>();
+    		ArrayList<String> toppings = new ArrayList<String>();
+    		toppings.add("Ham");toppings.add("Pineapple"); 
+    		hawaiianTop.add("Ham");hawaiianTop.add("Pineapple"); 
+    		deluxeTop.add("Green Pepper");deluxeTop.add("Mushroom"); deluxeTop.add("Onion");deluxeTop.add("Pepperoni"); deluxeTop.add("Sausage"); 
     		switch(type) {
     		case "Deluxe":
-    			Pizza pizza = new Deluxe(type, size, toppings);
+    			Pizza pizza = new Deluxe(type, size, deluxeTop);
     			break;
     		case "Hawaiian":
-    			pizza = new Hawaiian(type, size, toppings);
+    			pizza = new Hawaiian(type, size, hawaiianTop);
     			break;
     		case "Build Your Own":
     			pizza = new BuildYourOwn(type, size, toppings);
