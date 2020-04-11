@@ -17,12 +17,19 @@ public class Hawaiian extends Pizza{
 	final static int surchargeLarge = 4; 
 	public static String style; 
 	public static String size;
-	ArrayList<String> top = new ArrayList<String>(); 
-	
-	public Hawaiian(String style, String size, ArrayList<String> top) {
-		super(style, size, top);
+
+	/**
+	 * Constructor for Hawaiian Pizza
+	 * @param style, size, toppings
+	 */
+	public Hawaiian(String style, String size, ArrayList<String> toppings) {
+		super(style, size, toppings);
 	}
 
+	/**
+	 * Overrides the super pizzaPrice() method and returns the price of the Deluxe pizza
+	 * @return pizza price as an integer 
+	 */
 	public int pizzaPrice() {
 		switch(size) {
 		case "Small":
@@ -32,7 +39,7 @@ public class Hawaiian extends Pizza{
 		case "Large":
 			return small + surchargeMed + surchargeLarge; 
 		default:
-			return small;
+			return small + surchargeMed; 
 		}
 	}
 	
@@ -42,7 +49,7 @@ public class Hawaiian extends Pizza{
 	* @return pizza details as a String
 	*/
 	public String toString() {
-		return style + " " + size + " " + top;
+		return super.toString(); 
 	}
 
 }
