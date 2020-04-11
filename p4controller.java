@@ -1,3 +1,12 @@
+ /**
+ * Controller Class of the first scene
+ * Handles the main screen, allowing user to pick the type, size, and toppings
+ * of a pizza. Also handles all buttons and text areas on the screen
+ * Methods include - add toppings, remove toppings
+ * 
+ * @author Karneet Arora, Manel Bermad
+ */
+
 package application;
 
 import java.lang.String;
@@ -114,7 +123,7 @@ public class p4controller {
         	buttonAddTopping.setDisable(false);
         	selectedToppingsList.getItems().clear();
 
-        	toppingsList.getItems().addAll("Chicken", "Ham", "Mushroom", "Onion", "Pepperoni",        										"Pineapple", "Saussage","Beef", "Cheese", "Green Pepper");
+        	toppingsList.getItems().addAll("Chicken", "Ham", "Mushroom", "Onion", "Pepperoni","Pineapple", "Saussage","Beef", "Cheese", "Green Pepper");
     	}
     }
     
