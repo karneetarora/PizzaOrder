@@ -2,6 +2,7 @@ package application;
 
 import java.lang.String;
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -58,8 +59,7 @@ public class p4controller {
     	if(toppingsCounter < 6  && !toppingsList.getSelectionModel().isEmpty()) { // and has selected something
     		toppingsCounter++;
     		selectedToppingsList.getItems().add(toppingsList.getSelectionModel().getSelectedItem());
-    		toppingsList.getItems().remove(toppingsList.getSelectionModel().getSelectedItem());
-    		    		
+    		toppingsList.getItems().remove(toppingsList.getSelectionModel().getSelectedItem());	    		
     	}
 
     }
@@ -76,12 +76,11 @@ public class p4controller {
     void actionClearSelection(ActionEvent event) {
     	toppingsList.getItems().clear();
     	pizzaComboBox.setValue("Build Your Own");
-
     }
 
-    Image photoBuildYourOwnPizza  =  new Image("application/BuildYourOwnPizza.png");
-    Image photoHawaiianPizza = new Image("application/HawaiianPizza.png");
-    Image photoDeluxPizza = new Image("application/DeluxPizza.png");
+    Image photoBuildYourOwnPizza  =  new Image("application/BuildYourOwnPizza.png.jpg");
+    Image photoHawaiianPizza = new Image("application/HawaiianPizza.png.jpg");
+    Image photoDeluxPizza = new Image("application/DeluxPizza.png.jpg");
 
     @FXML
     void selectedPizza(ActionEvent event) {
@@ -106,19 +105,16 @@ public class p4controller {
         	buttionRemoveTopping.setDisable(true);
         	selectedToppingsList.getItems().clear();
         	selectedToppingsList.getItems().addAll("Sausage", "Pepperoni", "Green Pepper", 
-        											"Onion", "Mushroom");// collection?
-        	
+        											"Onion", "Mushroom");// collection?	
     	}else { // if build your own
     		imageView.setImage(photoBuildYourOwnPizza);
-
+    		
         	toppingsList.getItems().clear();
         	toppingsList.setDisable(false);
         	buttonAddTopping.setDisable(false);
         	selectedToppingsList.getItems().clear();
 
-        	toppingsList.getItems().addAll("Chicken", "Ham", "Mushroom", "Onion", "Pepperoni",
-        										"Pineapple", "Saussage","Beef", "Cheese", "Green Pepper");
-
+        	toppingsList.getItems().addAll("Chicken", "Ham", "Mushroom", "Onion", "Pepperoni",        										"Pineapple", "Saussage","Beef", "Cheese", "Green Pepper");
     	}
     }
     
@@ -128,18 +124,23 @@ public class p4controller {
     	if (!selectedToppingsList.getItems().isEmpty()) {
     		type = pizzaComboBox.getValue();
     		size = sizeComboBox.getValue();
+    		
+    		List<String> lst = selectedToppingsList.getItems(); 
+    		ArrayList<String> toppings = new ArrayList<String>(lst);
+    		/**
     		ArrayList<String> deluxeTop = new ArrayList<String>();
     		ArrayList<String> hawaiianTop = new ArrayList<String>();
     		ArrayList<String> toppings = new ArrayList<String>();
     		toppings.add("Ham");toppings.add("Pineapple"); 
     		hawaiianTop.add("Ham");hawaiianTop.add("Pineapple"); 
     		deluxeTop.add("Green Pepper");deluxeTop.add("Mushroom"); deluxeTop.add("Onion");deluxeTop.add("Pepperoni"); deluxeTop.add("Sausage"); 
+    		**/
     		switch(type) {
     		case "Deluxe":
-    			Pizza pizza = new Deluxe(type, size, deluxeTop);
+    			Pizza pizza = new Deluxe(type, size, toppings);
     			break;
     		case "Hawaiian":
-    			pizza = new Hawaiian(type, size, hawaiianTop);
+    			pizza = new Hawaiian(type, size, toppings);
     			break;
     		case "Build Your Own":
     			pizza = new BuildYourOwn(type, size, toppings);
@@ -151,9 +152,8 @@ public class p4controller {
     		textArea.appendText("Your pizza has been added to your order.");
     	}else {
     		//remove system.out.print and use textArea.appendText
-    		System.out.println("not good to add, curr is " );
+    		//System.out.println("not good to add, curr is " );
     		textArea.appendText("Please select at least 1 topping.");
-    		
     	}
     }
     
@@ -161,7 +161,6 @@ public class p4controller {
     @FXML
     void actionShowOrder(ActionEvent event) {
 
-    	//implement 
-    	
+    	//implement    	
     }
 }
