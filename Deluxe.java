@@ -1,5 +1,6 @@
  /**
- * Deluxe Class
+ * Deluxe Pizza Class
+ * 
  * Methods include - pizzaPrice(), toString()
  * 
  * @author Karneet Arora, Manel Bermad
@@ -15,14 +16,21 @@ public class Deluxe extends Pizza {
 	final static int surchargeLarge = 4; 
 	public static String style; 
 	public static String size;
-	ArrayList<String> top = new ArrayList<String>();
+
 	
-	
-	public Deluxe(String style, String size,  ArrayList<String> top) {
-		super(style, size, top);
+	/**
+	 * Constructor for Deluxe Pizza
+	 * @param style, size, toppings
+	 */
+	public Deluxe(String style, String size,  ArrayList<String> toppings) {
+		super(style, size, toppings);
 	}
 
 	@Override
+	/**
+	 * Overrides the super pizzaPrice() method and returns the price of the Deluxe pizza
+	 * @return pizza price as an integer 
+	 */
 	public int pizzaPrice() {
 		switch(size) {
 		case "Small":
@@ -32,7 +40,7 @@ public class Deluxe extends Pizza {
 		case "Large":
 			return small + surchargeMed + surchargeLarge; 
 		default:
-			return small;
+			return small + surchargeMed; 
 		}
 	}
 	
@@ -42,7 +50,7 @@ public class Deluxe extends Pizza {
 	* @return pizza details as a String
 	*/
 	public String toString() {
-		return style + " " + size + " " + top;
+		return super.toString(); 
 	}
 
 }
