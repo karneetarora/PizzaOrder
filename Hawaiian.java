@@ -25,7 +25,8 @@ public class Hawaiian extends Pizza{
 	public Hawaiian(String style, String size, ArrayList<String> toppings) {
 		super(style, size, toppings);
 	}
-
+	
+	@Override
 	/**
 	 * Overrides the super pizzaPrice() method and returns the price of the Deluxe pizza
 	 * @return pizza price as an integer 
