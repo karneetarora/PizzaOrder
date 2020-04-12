@@ -53,7 +53,6 @@ public class p4controller {
     @FXML
     private ComboBox<String> pizzaComboBox;
 
-
     @FXML
     private ComboBox<String> sizeComboBox;
 
@@ -63,6 +62,10 @@ public class p4controller {
     int toppingsCounter = 0;
 
     @FXML
+    /**
+     * Adds the selected toppings to the pizza order 
+     * @param Add button clicked
+     */
     void actionAddTopping(ActionEvent event) {
     	// check counter!
     	if(toppingsCounter < 6  && !toppingsList.getSelectionModel().isEmpty()) { // and has selected something
@@ -70,21 +73,36 @@ public class p4controller {
     		selectedToppingsList.getItems().add(toppingsList.getSelectionModel().getSelectedItem());
     		toppingsList.getItems().remove(toppingsList.getSelectionModel().getSelectedItem());	    		
     	}
-
+    	else if(toppingsCounter == 6 ) {
+    		textArea.appendText("Only up to 6 toppings can be selected.\n");
+    	}
     }
     
-   @FXML
+    @FXML
+    /**
+     * Removes the selected toppings from the list 
+     * @param Remove button clicked
+     */
     void actionRemoveTopping(ActionEvent event) {
 	   if(!selectedToppingsList.getSelectionModel().isEmpty()) {
 		   toppingsList.getItems().add(selectedToppingsList.getSelectionModel().getSelectedItem());
 		   selectedToppingsList.getItems().remove(selectedToppingsList.getSelectionModel().getSelectedItem());
+		   toppingsCounter--; 
 	   }
     }
    
     @FXML
+    /**
+     * Clears the form and the selected toppings list 
+     * Resets the form to "Build Your Own" and restores the original available toppings list
+     * @param Clear button clicked
+     */
     void actionClearSelection(ActionEvent event) {
-    	toppingsList.getItems().clear();
+    	selectedToppingsList.getItems().clear();
     	pizzaComboBox.setValue("Build Your Own");
+    	toppingsList.getItems().clear();
+    	toppingsList.getItems().addAll("Beef", "Cheese", "Chicken", "Green Pepper", "Ham", "Mushroom", "Onion", "Pepperoni", "Pineapple", "Saussage");
+    	toppingsCounter = 0; 
     }
 
     Image photoBuildYourOwnPizza  =  new Image("application/BuildYourOwnPizza.png.jpg");
@@ -92,6 +110,10 @@ public class p4controller {
     Image photoDeluxPizza = new Image("application/DeluxPizza.png.jpg");
 
     @FXML
+    /**
+     * 
+     * @param event
+     */
     void selectedPizza(ActionEvent event) {
     	toppingsCounter = 0;
     	if(pizzaComboBox.getValue().equals("Hawaiian")) {
@@ -104,7 +126,6 @@ public class p4controller {
         	selectedToppingsList.getItems().clear();
         	selectedToppingsList.getItems().addAll("Ham", "Pineapple");
         	
-    	//	Pizza H = new Hawaiian(size, selectedToppingsList);
     	}else if(pizzaComboBox.getValue().equals("Deluxe")) {
     		imageView.setImage(photoDeluxPizza);
 
@@ -121,6 +142,7 @@ public class p4controller {
         	toppingsList.getItems().clear();
         	toppingsList.setDisable(false);
         	buttonAddTopping.setDisable(false);
+        	buttionRemoveTopping.setDisable(false);
         	selectedToppingsList.getItems().clear();
 
         	toppingsList.getItems().addAll("Chicken", "Ham", "Mushroom", "Onion", "Pepperoni","Pineapple", "Saussage","Beef", "Cheese", "Green Pepper");
@@ -128,6 +150,10 @@ public class p4controller {
     }
     
     @FXML
+    /**
+     * 
+     * @param Add to Order button clicked
+     */
     void actionAddToOrder(ActionEvent event) {
     	textArea.clear();
     	if (!selectedToppingsList.getItems().isEmpty()) {
@@ -136,14 +162,7 @@ public class p4controller {
     		
     		List<String> lst = selectedToppingsList.getItems(); 
     		ArrayList<String> toppings = new ArrayList<String>(lst);
-    		/**
-    		ArrayList<String> deluxeTop = new ArrayList<String>();
-    		ArrayList<String> hawaiianTop = new ArrayList<String>();
-    		ArrayList<String> toppings = new ArrayList<String>();
-    		toppings.add("Ham");toppings.add("Pineapple"); 
-    		hawaiianTop.add("Ham");hawaiianTop.add("Pineapple"); 
-    		deluxeTop.add("Green Pepper");deluxeTop.add("Mushroom"); deluxeTop.add("Onion");deluxeTop.add("Pepperoni"); deluxeTop.add("Sausage"); 
-    		**/
+    		
     		switch(type) {
     		case "Deluxe":
     			Pizza pizza = new Deluxe(type, size, toppings);
@@ -156,20 +175,23 @@ public class p4controller {
     			break; 
     		default:
     			break; 
-    		}
-    		
+    		}  		
     		textArea.appendText("Your pizza has been added to your order.");
     	}else {
     		//remove system.out.print and use textArea.appendText
     		//System.out.println("not good to add, curr is " );
-    		textArea.appendText("Please select at least 1 topping.");
+    		textArea.appendText("Please select at least 1 topping.\n");
     	}
     }
     
-    
     @FXML
+    /**
+     * 
+     * @param Show Order button clicked
+     */
     void actionShowOrder(ActionEvent event) {
 
     	//implement    	
     }
+    
 }
