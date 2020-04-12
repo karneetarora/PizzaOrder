@@ -68,11 +68,12 @@ public class p4controller {
     private TextArea textArea;
     
     int toppingsCounter = 0;
+    List<Pizza> pizzaList = new ArrayList<Pizza>();;
 
     @FXML
     /**
      * Adds the selected toppings to the pizza order 
-     * @param Add button clicked
+     * @param event Add button clicked
      */
     void actionAddTopping(ActionEvent event) {
     	// check counter!
@@ -89,7 +90,7 @@ public class p4controller {
     @FXML
     /**
      * Removes the selected toppings from the list 
-     * @param Remove button clicked
+     * @param event Remove button clicked
      */
     void actionRemoveTopping(ActionEvent event) {
 	   if(!selectedToppingsList.getSelectionModel().isEmpty()) {
@@ -103,7 +104,7 @@ public class p4controller {
     /**
      * Clears the form and the selected toppings list 
      * Resets the form to "Build Your Own" and restores the original available toppings list
-     * @param Clear button clicked
+     * @param event Clear button clicked
      */
     void actionClearSelection(ActionEvent event) {
     	selectedToppingsList.getItems().clear();
@@ -113,14 +114,14 @@ public class p4controller {
     	toppingsCounter = 0; 
     }
 
-    Image photoBuildYourOwnPizza  =  new Image("application/BuildYourOwnPizza.png.jpg");
-    Image photoHawaiianPizza = new Image("application/HawaiianPizza.png.jpg");
-    Image photoDeluxPizza = new Image("application/DeluxPizza.png.jpg");
+    Image photoBuildYourOwnPizza  =  new Image("application/BuildYourOwnPizza.png");
+    Image photoHawaiianPizza = new Image("application/HawaiianPizza.png");
+    Image photoDeluxPizza = new Image("application/DeluxPizza.png");
 
     @FXML
     /**
-     * 
-     * @param event
+     * Resets parameters as the pizza type changes
+     * @param event Pizza Combobox selection has changed
      */
     void selectedPizza(ActionEvent event) {
     	toppingsCounter = 0;
@@ -160,30 +161,45 @@ public class p4controller {
     @FXML
     /**
      * 
-     * @param Add to Order button clicked
+     * @param event Add to Order button clicked
      */
     void actionAddToOrder(ActionEvent event) {
     	textArea.clear();
     	if (!selectedToppingsList.getItems().isEmpty()) {
     		type = pizzaComboBox.getValue();
     		size = sizeComboBox.getValue();
-    		
+
     		List<String> lst = selectedToppingsList.getItems(); 
     		ArrayList<String> toppings = new ArrayList<String>(lst);
-    		
+    		System.out.println(toppings);
+
     		switch(type) {
     		case "Deluxe":
     			Pizza pizza = new Deluxe(type, size, toppings);
+    			pizzaList.add(pizza);
     			break;
     		case "Hawaiian":
     			pizza = new Hawaiian(type, size, toppings);
+    			System.out.println("pizza info:" + pizza.toString());
+    			pizzaList.add(pizza);
+    			System.out.println("iterate");
+    			//SOMETHING WRONG WITH TOSTRING
+    			for(Pizza z: pizzaList) {
+        			System.out.println(z.toString());
+        		}
+    			
     			break;
     		case "Build Your Own":
     			pizza = new BuildYourOwn(type, size, toppings);
+    			pizzaList.add(pizza);
     			break; 
     		default:
     			break; 
-    		}  		
+    		}  
+    		/*for(Pizza z: pizzaList) {
+    			System.out.println(z.toString());
+    		}
+    		*/
     		textArea.appendText("Your pizza has been added to your order.");
     		numOfPizzas++;
         	selectedToppingsList.getItems().clear();
@@ -209,9 +225,9 @@ public class p4controller {
     	window.setScene(screen2);
     	window.show(); 
     	
-    	FXMLLoader loader = FXMLLoader.load(getClass().getResource("Screen2.fxml"));
-    	scene2 controller2 = loader.getController(); 
-    	controller2.numberOfPizzas(numOfPizzas); 
+    	//FXMLLoader loader = FXMLLoader.load(getClass().getResource("Screen2.fxml"));
+    	//scene2 controller2 = loader.getController(); 
+    	//controller2.numberOfPizzas(numOfPizzas); 
 	    
     	//implement    	
     }
