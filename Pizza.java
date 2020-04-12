@@ -18,7 +18,14 @@ public abstract class Pizza {
 		this.size = size; 
 		this.toppings = toppings; 
 	}    
-	public Pizza(String style, String size) { }    
+	
+	public Pizza(String style, String size) { 
+		this.style = style; 
+		this.size = size; 
+		this.toppings = toppings; 
+	}    
+	
+	
 	public abstract int pizzaPrice();   
 	
 	/**
@@ -26,6 +33,6 @@ public abstract class Pizza {
 	* @return pizza details as a String
 	*/
 	public String toString() {  
-		return this.style + " " + this.size + " " + this.toppings; 
+		return this.size + " - " + this.style + " with " + this.toppings; 
 	}        
 }  
