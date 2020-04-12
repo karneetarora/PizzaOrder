@@ -33,6 +33,7 @@ public class p4controller {
 	public String type; 
 	public String size; 
 	public int numOfPizzas; 
+	public int totalPrice; 
 
     @FXML
     private Button buttonAddTopping;
@@ -114,9 +115,9 @@ public class p4controller {
     	toppingsCounter = 0; 
     }
 
-    Image photoBuildYourOwnPizza  =  new Image("application/BuildYourOwnPizza.png");
-    Image photoHawaiianPizza = new Image("application/HawaiianPizza.png");
-    Image photoDeluxPizza = new Image("application/DeluxPizza.png");
+    Image photoBuildYourOwnPizza  =  new Image("application/BuildYourOwnPizza.png.jpg");
+    Image photoHawaiianPizza = new Image("application/HawaiianPizza.png.jpg");
+    Image photoDeluxPizza = new Image("application/DeluxPizza.png.jpg");
 
     @FXML
     /**
@@ -164,49 +165,53 @@ public class p4controller {
      * @param event Add to Order button clicked
      */
     void actionAddToOrder(ActionEvent event) {
-    	textArea.clear();
+    	boolean clear = false;  
+    //	textArea.clear();
     	if (!selectedToppingsList.getItems().isEmpty()) {
     		type = pizzaComboBox.getValue();
     		size = sizeComboBox.getValue();
 
     		List<String> lst = selectedToppingsList.getItems(); 
     		ArrayList<String> toppings = new ArrayList<String>(lst);
-    		System.out.println(toppings);
 
     		switch(type) {
     		case "Deluxe":
     			Pizza pizza = new Deluxe(type, size, toppings);
     			pizzaList.add(pizza);
+    			
+    			//totalPrice += pizza.pizzaPrice();
     			break;
     		case "Hawaiian":
     			pizza = new Hawaiian(type, size, toppings);
-    			
-    			System.out.println("pizza info:" + pizza.toString());
     			pizzaList.add(pizza);
-    			System.out.println("iterate");
-    			//SOMETHING WRONG WITH TOSTRING
-    			for(Pizza z: pizzaList) {
-        			System.out.println(z.toString());
-        		}
     			
+    			//totalPrice += pizza.pizzaPrice(); 
     			break;
     		case "Build Your Own":
     			pizza = new BuildYourOwn(type, size, toppings);
     			pizzaList.add(pizza);
+    			
+    			//totalPrice += pizza.pizzaPrice();
     			break; 
     		default:
     			break; 
     		}  
-
-    		textArea.appendText("Your pizza has been added to your order.");
+    		if(clear) {
+    			textArea.clear();
+    		}
+    		textArea.appendText("Your pizza has been added to your order.\n");
+    		
     		numOfPizzas++;
         	selectedToppingsList.getItems().clear();
         	pizzaComboBox.setValue("Build Your Own");
         	toppingsList.getItems().clear();
         	toppingsList.getItems().addAll("Beef", "Cheese", "Chicken", "Green Pepper", "Ham", "Mushroom", "Onion", "Pepperoni", "Pineapple", "Saussage");
+        	sizeComboBox.setValue("Medium");
         	toppingsCounter = 0; 
     	}else {
+    		textArea.clear();
     		textArea.appendText("Please select at least 1 topping.\n");
+    		clear = true; 
     	}
     }
     
@@ -223,6 +228,13 @@ public class p4controller {
     	window.setScene(screen2);
     	window.show(); 
     	
+    	
+		for(Pizza z: pizzaList) {
+			System.out.println(z.toString());
+			//System.out.println(totalPrice);
+		}
+    	
+    	//secondScene.pizzaDisplay.appendText("");
     	//FXMLLoader loader = FXMLLoader.load(getClass().getResource("Screen2.fxml"));
     	//scene2 controller2 = loader.getController(); 
     	//controller2.numberOfPizzas(numOfPizzas); 
