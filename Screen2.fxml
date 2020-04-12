@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="357.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="357.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.scene2">
 	<children>
 		<Button fx:id="buttonClear" layoutX="341.0" layoutY="301.0" mnemonicParsing="false" onAction="#actionClear" text="Clear" />
 		<Button fx:id="buttonBack" layoutX="272.0" layoutY="301.0" mnemonicParsing="false" onAction="#actionGoBack" text="Back" />
