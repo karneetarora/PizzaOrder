@@ -9,22 +9,30 @@
 
 package application;
 
+import java.io.IOException;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class p4controller {
 	public String type; 
 	public String size; 
+	public int numOfPizzas; 
 
     @FXML
     private Button buttonAddTopping;
@@ -177,20 +185,34 @@ public class p4controller {
     			break; 
     		}  		
     		textArea.appendText("Your pizza has been added to your order.");
+    		numOfPizzas++;
+        	selectedToppingsList.getItems().clear();
+        	pizzaComboBox.setValue("Build Your Own");
+        	toppingsList.getItems().clear();
+        	toppingsList.getItems().addAll("Beef", "Cheese", "Chicken", "Green Pepper", "Ham", "Mushroom", "Onion", "Pepperoni", "Pineapple", "Saussage");
+        	toppingsCounter = 0; 
     	}else {
-    		//remove system.out.print and use textArea.appendText
-    		//System.out.println("not good to add, curr is " );
     		textArea.appendText("Please select at least 1 topping.\n");
     	}
     }
     
     @FXML
     /**
-     * 
+     * Displays the Second Screen, which has the order details
      * @param Show Order button clicked
      */
-    void actionShowOrder(ActionEvent event) {
-
+    void actionShowOrder(ActionEvent event) throws IOException {
+    	Parent secondScene = FXMLLoader.load(getClass().getResource("Screen2.fxml"));
+    	Scene screen2 = new Scene(secondScene);
+    	
+    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	window.setScene(screen2);
+    	window.show(); 
+    	
+    	FXMLLoader loader = FXMLLoader.load(getClass().getResource("Screen2.fxml"));
+    	scene2 controller2 = loader.getController(); 
+    	controller2.numberOfPizzas(numOfPizzas); 
+	    
     	//implement    	
     }
     
