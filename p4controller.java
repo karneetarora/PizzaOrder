@@ -68,7 +68,7 @@ public class p4controller {
     private TextArea textArea;
     
     int toppingsCounter = 0;
-    List<Pizza> pizzaList = new ArrayList<Pizza>();;
+    List<Pizza> pizzaList = new ArrayList<Pizza>();
 
     @FXML
     /**
@@ -160,7 +160,7 @@ public class p4controller {
     
     @FXML
     /**
-     * 
+     * Adds pizza's information to the pizzaList
      * @param event Add to Order button clicked
      */
     void actionAddToOrder(ActionEvent event) {
@@ -180,6 +180,7 @@ public class p4controller {
     			break;
     		case "Hawaiian":
     			pizza = new Hawaiian(type, size, toppings);
+    			
     			System.out.println("pizza info:" + pizza.toString());
     			pizzaList.add(pizza);
     			System.out.println("iterate");
@@ -196,10 +197,7 @@ public class p4controller {
     		default:
     			break; 
     		}  
-    		/*for(Pizza z: pizzaList) {
-    			System.out.println(z.toString());
-    		}
-    		*/
+
     		textArea.appendText("Your pizza has been added to your order.");
     		numOfPizzas++;
         	selectedToppingsList.getItems().clear();
@@ -215,7 +213,7 @@ public class p4controller {
     @FXML
     /**
      * Displays the Second Screen, which has the order details
-     * @param Show Order button clicked
+     * @param event Show Order button clicked
      */
     void actionShowOrder(ActionEvent event) throws IOException {
     	Parent secondScene = FXMLLoader.load(getClass().getResource("Screen2.fxml"));
