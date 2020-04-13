@@ -16,16 +16,18 @@ public class BuildYourOwn extends Pizza{
 	final int surchargeLarge = 4; 
 	final int chargePerTopping = 2; 
 	public static String style; 
-	public static String size;
-	int numOfToppings;
+	private int numOfToppings;
 	
 	
 	/**
 	 * Constructor for Build Your Own Pizza
-	 * @param style, size, toppings
+	 * @param style Deluxe
+	 * @param size Small, Medium, or Large
+	 * @param toppings List of toppings
 	 */
 	public BuildYourOwn(String style, String size, ArrayList<String> toppings) {
 		super(style, size, toppings);
+		this.numOfToppings = toppings.size();
 	}
 
 	@Override
@@ -35,15 +37,16 @@ public class BuildYourOwn extends Pizza{
 	 * @return pizza price as an integer 
 	 */
 	public int pizzaPrice() {
-		switch(size) {
+
+		switch(this.size) {
 		case "Small":
-			return small + numOfToppings * chargePerTopping;
+			return small + this.numOfToppings * chargePerTopping;
 		case "Medium":
-			return small + surchargeMed + numOfToppings * chargePerTopping; 
+			return small + surchargeMed + this.numOfToppings * chargePerTopping; 
 		case "Large":
-			return small + surchargeMed + surchargeLarge + numOfToppings * chargePerTopping; 
+			return small + surchargeMed + surchargeLarge + this.numOfToppings * chargePerTopping; 
 		default:
-			return small + surchargeMed + numOfToppings * chargePerTopping; 
+			return small + surchargeMed + this.numOfToppings * chargePerTopping; 
 		}
 	}
 	
@@ -53,7 +56,7 @@ public class BuildYourOwn extends Pizza{
 	* @return pizza details as a String
 	*/
 	public String toString() {
-		return super.toString(); 
+		return super.toString() +  "\nPrice = $" + this.pizzaPrice() + "\n"; 
 	}
 
 }
