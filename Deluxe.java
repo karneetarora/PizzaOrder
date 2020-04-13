@@ -15,12 +15,13 @@ public class Deluxe extends Pizza {
 	final static int surchargeMed = 2; 
 	final static int surchargeLarge = 4; 
 	public static String style; 
-	public static String size;
 
-	
+
 	/**
 	 * Constructor for Deluxe Pizza
-	 * @param style, size, toppings
+	 * @param style Deluxe
+	 * @param size Small, Medium, or Large
+	 * @param toppings List of toppings
 	 */
 	public Deluxe(String style, String size,  ArrayList<String> toppings) {
 		super(style, size, toppings);
@@ -32,7 +33,7 @@ public class Deluxe extends Pizza {
 	 * @return pizza price as an integer 
 	 */
 	public int pizzaPrice() {
-		switch(size) {
+		switch(this.size) {
 		case "Small":
 			return small;
 		case "Medium":
@@ -50,7 +51,7 @@ public class Deluxe extends Pizza {
 	* @return pizza details as a String
 	*/
 	public String toString() {
-		return super.toString(); 
+		return super.toString() +  "\nPrice = $" + this.pizzaPrice() + "\n"; 
 	}
 
 }
