@@ -31,30 +31,19 @@ public class scene2 {
     private Button buttonBack;
 
     @FXML
-    private TextArea pizzaDisplay;
+    public TextArea pizzaDisplay;
 
     @FXML
-    private TextArea numberOfPies;
+    public  TextArea numberOfPies;
 
     @FXML
-    private TextArea totalPrice;
+    public TextArea totalPrice;
 
-    @FXML
-    /**
-     * Clears the pizza orders
-     * Clears the price and number of pizza fields
-     * @param Clear Button clicked 
-     */
-    void actionClear(ActionEvent event) {
-    	numberOfPies.clear(); 
-    	totalPrice.clear(); 
-    	pizzaDisplay.clear(); 
-    }
 
     @FXML
     /**
      * Closes the current screen and goes back to the main screen 
-     * @param Back Button clicked 
+     * @param event Back Button clicked 
      */
     void actionGoBack(ActionEvent event) throws IOException {
     	Parent firstScene = FXMLLoader.load(getClass().getResource("FirstScreen.fxml"));
@@ -65,13 +54,21 @@ public class scene2 {
     	window.show(); 
     }
     
+    
+
+    @FXML
     /**
-     * Displays total number of pizzas being ordered 
-     * @param total number of pizzas added to the cart
+     * Clears the order, the price, and number of pizza fields
+     * @param event Clear button clicked
      */
-    void numberOfPizzas(int num) { 
-    	numberOfPies.appendText(num + "\n");
+    void actionClear(ActionEvent event) {
+    	numberOfPies.clear(); 
+    	totalPrice.clear(); 
+    	pizzaDisplay.clear();
+
+
     }
+    
 
 }
 
