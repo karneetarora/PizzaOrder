@@ -26,14 +26,14 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class p4controller {
+
+public class p4controller  {
 	public String type; 
 	public String size; 
-	public int numOfPizzas; 
-	public int totalPrice; 
+	public int numOfPizzas = 0; 
+	public int totalPrice = 0; 
 
     @FXML
     private Button buttonAddTopping;
@@ -69,7 +69,7 @@ public class p4controller {
     private TextArea textArea;
     
     int toppingsCounter = 0;
-    List<Pizza> pizzaList = new ArrayList<Pizza>();
+     List<Pizza> pizzaList = new ArrayList<Pizza>();
 
     @FXML
     /**
@@ -115,9 +115,9 @@ public class p4controller {
     	toppingsCounter = 0; 
     }
 
-    Image photoBuildYourOwnPizza  =  new Image("application/BuildYourOwnPizza.png.jpg");
-    Image photoHawaiianPizza = new Image("application/HawaiianPizza.png.jpg");
-    Image photoDeluxPizza = new Image("application/DeluxPizza.png.jpg");
+    Image photoBuildYourOwnPizza  =  new Image("application/BuildYourOwnPizza.png");
+    Image photoHawaiianPizza = new Image("application/HawaiianPizza.png");
+    Image photoDeluxPizza = new Image("application/DeluxPizza.png");
 
     @FXML
     /**
@@ -179,19 +179,19 @@ public class p4controller {
     			Pizza pizza = new Deluxe(type, size, toppings);
     			pizzaList.add(pizza);
     			
-    			//totalPrice += pizza.pizzaPrice();
+    			totalPrice += pizza.pizzaPrice();
     			break;
     		case "Hawaiian":
     			pizza = new Hawaiian(type, size, toppings);
     			pizzaList.add(pizza);
     			
-    			//totalPrice += pizza.pizzaPrice(); 
+    			totalPrice += pizza.pizzaPrice(); 
     			break;
     		case "Build Your Own":
     			pizza = new BuildYourOwn(type, size, toppings);
     			pizzaList.add(pizza);
     			
-    			//totalPrice += pizza.pizzaPrice();
+    			totalPrice += pizza.pizzaPrice();
     			break; 
     		default:
     			break; 
@@ -213,6 +213,7 @@ public class p4controller {
     		textArea.appendText("Please select at least 1 topping.\n");
     		clear = true; 
     	}
+    	
     }
     
     @FXML
@@ -221,25 +222,38 @@ public class p4controller {
      * @param event Show Order button clicked
      */
     void actionShowOrder(ActionEvent event) throws IOException {
-    	Parent secondScene = FXMLLoader.load(getClass().getResource("Screen2.fxml"));
-    	Scene screen2 = new Scene(secondScene);
-    	
-    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	window.setScene(screen2);
-    	window.show(); 
-    	
-    	
-		for(Pizza z: pizzaList) {
-			System.out.println(z.toString());
-			//System.out.println(totalPrice);
-		}
-    	
-    	//secondScene.pizzaDisplay.appendText("");
-    	//FXMLLoader loader = FXMLLoader.load(getClass().getResource("Screen2.fxml"));
-    	//scene2 controller2 = loader.getController(); 
-    	//controller2.numberOfPizzas(numOfPizzas); 
-	    
-    	//implement    	
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Screen2.fxml"));
+        Parent parent = loader.load();
+        
+        Scene scene = new Scene(parent); // <---here 
+        
+        scene2 controller = loader.getController();
+
+        if(pizzaList.size() == 0 ) {
+            controller.pizzaDisplay.appendText("Your Order is empty"); 
+
+        }else {
+            String fullOrder = "";
+            for(Pizza p: pizzaList) {
+            	fullOrder += p.toString(); 
+            }
+            controller.pizzaDisplay.appendText(fullOrder + "\nTotal price: $" + totalPrice ); 
+            controller.totalPrice.appendText("$" +totalPrice );
+            controller.numberOfPies.appendText(pizzaList.size() + "");
+            
+
+        }
+        
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();      
+        window.setScene(scene);
+        window.show();
+            
+
     }
+
     
 }
+
+
