@@ -5,14 +5,14 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="602.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.scene2">
+<AnchorPane prefHeight="395.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.scene2">
 	<children>
-		<Button fx:id="buttonClear" layoutX="598.0" layoutY="307.0" mnemonicParsing="false" onAction="#actionClear" text="Clear" />
-		<Button fx:id="buttonBack" layoutX="533.0" layoutY="307.0" mnemonicParsing="false" onAction="#actionGoBack" text="Back" />
-		<TextArea fx:id="pizzaDisplay" editable="false" layoutX="14.0" layoutY="15.0" prefHeight="573.0" prefWidth="466.0" text="&#10;" />
-		<TextArea fx:id="numberOfPies" editable="false" layoutX="497.0" layoutY="41.0" prefHeight="25.0" prefWidth="120.0" promptText="#  of pizzas" />
-		<TextArea fx:id="totalPrice" editable="false" layoutX="503.0" layoutY="113.0" prefHeight="10.0" prefWidth="120.0" />
-		<Label layoutX="503.0" layoutY="24.0" prefHeight="17.0" prefWidth="120.0" text="Number of Pizzas:" />
-		<Label layoutX="511.0" layoutY="96.0" prefHeight="17.0" prefWidth="92.0" text="Total Price:" />
+		<Button fx:id="buttonClear" layoutX="412.0" layoutY="317.0" mnemonicParsing="false" onAction="#actionClear" text="Clear" />
+		<Button fx:id="buttonBack" layoutX="338.0" layoutY="317.0" mnemonicParsing="false" onAction="#actionGoBack" prefHeight="25.0" prefWidth="43.0" text="Back" />
+		<TextArea fx:id="pizzaDisplay" layoutX="8.0" layoutY="11.0" prefHeight="336.0" prefWidth="321.0" text="&#10;" />
+		<TextArea fx:id="numberOfPies" layoutX="338.0" layoutY="97.0" prefHeight="25.0" prefWidth="120.0" promptText="#  of pies" />
+		<TextArea fx:id="totalPrice" layoutX="338.0" layoutY="197.0" prefHeight="10.0" prefWidth="120.0" />
+		<Label layoutX="335.0" layoutY="68.0" prefHeight="17.0" prefWidth="92.0" text="Number of Pies:" />
+		<Label layoutX="335.0" layoutY="162.0" prefHeight="17.0" prefWidth="92.0" text="Total Price:" />
 	</children>
 </AnchorPane>
